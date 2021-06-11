@@ -1,10 +1,10 @@
 ////////////////////////////
 //////CONFIG LOAD///////////
 ////////////////////////////
-const { canModifyQueue } = require("../util/nkm");
+const { canModifyQueue } = require("../util/MilratoUtil");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed"); 
-const { approveemoji,  denyemoji,  PREFIX,} = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
@@ -29,12 +29,12 @@ execute(message, args) {
     //If not a number then return error
     if (isNaN(args[0])) return attentionembed(message,`Try: ${message.client.prefix}remove <Queue Number>`);
     //get the song
-    const song = queue.songs.splice(args[0] - 1, 1);
+    const song = queue.songs.splice(args[0], 1);
     //react with approve
-    message.react(approveemoji)
+    message.react("✅")
     //send approve
     queue.textChannel.send(new MessageEmbed()
-    .setDescription(`:no_entry_sign: | ${message.author} removed **${song[0].title}** from the Queue`)
+    .setDescription(`❌ | ${message.author} removed **${song[0].title}** from the Queue`)
     .setColor("RANDOM")
     );
   }

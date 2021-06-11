@@ -5,18 +5,18 @@ const ytsr = require("youtube-sr")
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { play } = require("../include/play")
 const { attentionembed } = require("../util/attentionembed");
-const { approveemoji, denyemoji, PREFIX, } = require(`../config.json`);
+const { PREFIX, } = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
 module.exports = {
   name: "filter",
   description: "Set Audio - Effects",
-  aliases: ["f"],
+  aliases: ["fi"],
   cooldown: 3,
   edesc: `Type this Command to change the current audio effect - style \nUsage: ${PREFIX}filter <Filtertype>`,
 
-  async execute(message, args, client) {
+async execute(message, args, client) {
     //if its not in a guild return
     if (!message.guild) return;
     //define channel
@@ -24,7 +24,7 @@ module.exports = {
     //get serverqueue
     const queue = message.client.queue.get(message.guild.id);
     //react with approve emoji
-    message.react(approveemoji).catch(console.error);
+    message.react("✅").catch(console.error);
     //if the argslength is null return error
     //if there is already a search return error
     if (message.channel.activeCollector)
@@ -47,10 +47,6 @@ module.exports = {
       'surround',//surrounding
       'apulsator=hz=1',//pulsator
       'asubboost',//subboost
-      'chorus=0.5:0.9:50|60|40:0.4|0.32|0.3:0.25|0.4|0.3:2|2.3|1.3',//chorus of 3
-      'stereotools=mlev=0.015625',//karaoke
-      'sofalizer=sofa=/path/to/ClubFritz12.sofa:type=freq:radius=2:rotation=5',//sofa
-      'silenceremove=window=0:detection=peak:stop_mode=all:start_mode=all:stop_periods=-1:stop_threshold=0',//desilencer
       "remove",
     ];
     //set some temporary variables
@@ -59,6 +55,7 @@ module.exports = {
     switch (args[0]) {
       case "bassboost":
         varforfilter = 0;
+
         break;
       case "8D":
         varforfilter = 1;
@@ -87,21 +84,9 @@ module.exports = {
       case "subboost":
         varforfilter = 9;
         break;
-      case "chorus":
-        varforfilter = 10;
-        break;
-      case "karaoke":
-        varforfilter = 11;
-        break;
-      case "sofa":
-        varforfilter = 12;
-        break;
-      case "desilencer":
-        varforfilter = 13;
-        break;
       case "clear":
-        varforfilter = 14;
-        break;
+      varforfilter = 10;
+      break;
       default:
         //fires if not valid input
         varforfilter = 404;
@@ -119,10 +104,6 @@ module.exports = {
         \`surrounding\`
         \`pulsator\`
         \`subboost\`
-        \`chorus\`
-        \`karaoke\`
-        \`sofa (makes audio suitable for earphone/headset)\`
-        \`desilencer (removes silence in the song automatically)\`
         \`clear\`   ---  removes all filters`)
         .setFooter(`Example: ${PREFIX}filter bassboost`)
         )
@@ -136,7 +117,7 @@ module.exports = {
       //play the collected song song, message, client, filters
       message.channel.send(new MessageEmbed()
       .setColor("RANDOM")
-      .setAuthor("Applying: " + args[0], "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif","https://discord.com/api/oauth2/authorize?client_id=767885987740254291&permissions=49572160&scope=bot")).then(msg =>{
+      .setAuthor("Applying: " + args[0], "https://cdn.discordapp.com/emojis/769935094285860894.gif")).then(msg =>{
         msg.delete({timeout: 2000});
       })
       play(song, message, client, choice);

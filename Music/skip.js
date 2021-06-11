@@ -1,16 +1,16 @@
 ////////////////////////////
 //////CONFIG LOAD///////////
 ////////////////////////////
-const { canModifyQueue } = require("../util/nkm");
+const { canModifyQueue } = require("../util/MilratoUtil");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed");
-const { approveemoji, denyemoji, PREFIX, } = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
 module.exports = {
   name: "skip",
-  aliases: ["se"],
+  aliases: ["s"],
   description: "Skip the currently playing song",
   cooldown: 5,
   edesc: `Type the Command, to skip to current listening song.\nUsage: ${PREFIX}skip`,
@@ -19,7 +19,7 @@ execute(message) {
     //if not in a guild retunr
     if (!message.guild) return;
     //react with approve emoji
-    message.react(approveemoji).catch(console.error);
+    message.react("✅").catch(console.error);
     //get the queue
     const queue = message.client.queue.get(message.guild.id);
     //if no Queue return error
@@ -33,7 +33,7 @@ execute(message) {
     queue.connection.dispatcher.end();
     //send approve message
     queue.textChannel.send(
-      new MessageEmbed().setColor("RANDOM").setAuthor(`${message.author.username} skipped the song.`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
+      new MessageEmbed().setColor("RANDOM").setAuthor(`${message.author.username} skipped the song.`, "https://cdn.discordapp.com/emojis/769915194444480542.png")
     ).catch(console.error);
   }
 };

@@ -4,11 +4,7 @@
 const { play } = require("../include/play");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed");
-const {
-  approveemoji,
-  denyemoji,
-  PREFIX,
-} = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 const ytsr = require("youtube-sr")
 
 ////////////////////////////
@@ -37,7 +33,7 @@ async execute(message, args, client) {
     if (!args.length)
       return attentionembed(message, `Usage: ${message.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`);
     //react with approve emoji
-    message.react(approveemoji).catch(console.error);
+    message.react("✅").catch(console.error);
     //get permissions and send error if bot doesnt have enough
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
@@ -57,7 +53,7 @@ async execute(message, args, client) {
       connection: null,
       songs: [],
       loop: false,
-      volume: 100,
+      volume: 69,
       filters: [],
       realseek: 0,
       playing: true
@@ -72,12 +68,12 @@ async execute(message, args, client) {
         //if its an url
         if (urlValid) { //send searching link
           message.channel.send(new MessageEmbed().setColor("RANDOM")
-            .setDescription(`**:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})**`))
+            .setDescription(`**💢 Searching 🔍 [\`LINK\`](${args.join(" ")})**`))
         //if not
         }
         else { //send searching TITLE
           message.channel.send(new MessageEmbed().setColor("RANDOM")
-            .setDescription(`**:notes: Searching 🔍 \`${args.join(" ")}\`**`))
+            .setDescription(`**💢 Searching 🔍 \`${args.join(" ")}\`**`))
         }
       } else {
         //If nothing is playing join the channel
@@ -89,12 +85,12 @@ async execute(message, args, client) {
         //if its an url
         if (urlValid) { //send searching link
           message.channel.send(new MessageEmbed().setColor("RANDOM")
-            .setDescription(`**:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})**`))
+            .setDescription(`**💢 Searching 🔍 [\`LINK\`](${args.join(" ")})**`))
           //if not 
         }
         else { //send searching TITLE
           message.channel.send(new MessageEmbed().setColor("RANDOM")
-            .setDescription(`**:notes: Searching 🔍 \`${args.join(" ")}\`**`))
+            .setDescription(`**💢 Searching 🔍 \`${args.join(" ")}\`**`))
         }
         //Set selfdeaf and serverdeaf true
         queueConstruct.connection.voice.setSelfDeaf(true);
@@ -136,8 +132,8 @@ async execute(message, args, client) {
       }                                                               
     }
     //get the thumbnail
-    let thumb = "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif"
-    if (song.thumbnail === undefined) thumb = "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif";
+    let thumb = "https://cdn.discordapp.com/attachments/748095614017077318/769672148524335114/unknown.png"
+    if (song.thumbnail === undefined) thumb = "https://cdn.discordapp.com/attachments/748095614017077318/769672148524335114/unknown.png";
     else thumb = song.thumbnail.url;
     //if there is a server queue send that message!
     if (serverQueue) {
@@ -163,7 +159,7 @@ async execute(message, args, client) {
       serverQueue.songs.push(song);
       //the new song embed
       const newsong = new MessageEmbed()
-        .setTitle(":notes:" + song.title)
+        .setTitle("✅ " + song.title)
         .setColor("RANDOM")
         .setThumbnail(thumb)
         .setURL(song.url)
@@ -199,3 +195,6 @@ async execute(message, args, client) {
   }
 };
 
+//////////////////////////////////////////
+//////////////////////////////////////////
+/////////////by Tomato#6966///////////////

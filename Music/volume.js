@@ -1,16 +1,16 @@
 ////////////////////////////
 //////CONFIG LOAD///////////
 ////////////////////////////
-const { canModifyQueue } = require("../util/nkm");
+const { canModifyQueue } = require("../util/MilratoUtil");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed"); 
-const { approveemoji,  denyemoji,  PREFIX,} = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
 module.exports = {
   name: "volume",
-  aliases: ["v"],
+  aliases: ["vol"],
   description: "Change volume",
   cooldown: 5,
   edesc: `Type the Command, to change the volume of the current song.\nUsage: ${PREFIX}volume <0-200>`,
@@ -19,7 +19,7 @@ execute(message, args) {
     //if not a guild return
     if(!message.guild) return;
     //react with approve emoji
-    message.react(approveemoji);
+    message.react("✅");
     //get the current queue
     const queue = message.client.queue.get(message.guild.id);
     //if no queue return error

@@ -1,23 +1,17 @@
-const { Client, Collection, MessageEmbed } = require("discord.js");
-const {
-  approveemoji,
-  denyemoji,
-  AVATARURL,
-  BOTNAME,
-  BOTCOLOR,
-} = require(`../config.json`);
+const {  MessageEmbed } = require("discord.js");
+
 module.exports = {
  async  attentionembed(message, titel) {
 
     try{
       await message.reactions.removeAll();
-       await message.react(denyemoji);
+       await message.react("❌");
       }catch{
         }
 
     let resultsEmbed = new MessageEmbed()
-      .setTitle(":x: " + titel)
-      .setColor("RANDOM")
+      .setTitle("❌ | " + titel)
+      .setColor("#ff0e7a")
       
       message.channel.send(resultsEmbed);
     return;

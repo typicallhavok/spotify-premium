@@ -4,17 +4,13 @@
 const { MessageEmbed, splitMessage, escapeMarkdown } = require("discord.js");
 const { Client, Collection } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed"); 
-const {
-  approveemoji,
-  denyemoji,
-  PREFIX,
-} = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
 module.exports = {
   name: "queue",
-  aliases: ["q"],
+  aliases: ["qu"],
   description: "Show the music queue and now playing.",
   cooldown: 7.5,
   edesc: `Type this command to play some music.\nUsage: ${PREFIX}queue`,
@@ -28,8 +24,8 @@ module.exports = {
     //set description
     console.log(queue.songs);
     let description = "";
-    for(let i = 1; i < queue.songs.length; i++){
-      description += `**${i}.** [${queue.songs[i].title.substring(1,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
+    for(let i = 0; i < queue.songs.length; i++){
+      description += `**${i}.** [${queue.songs[i].title.substring(0,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
     }
     //define queueembed
     let queueEmbed = new MessageEmbed()
@@ -48,7 +44,7 @@ module.exports = {
       //(over)write embed description
       queueEmbed.setDescription(m);
       //react with emoji
-      message.react(approveemoji)
+      message.react("✅")
       //send embed
       message.channel.send(queueEmbed);
     });
