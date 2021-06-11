@@ -25,7 +25,7 @@ module.exports = {
     if (!song) {
       queue.channel.leave();
       message.client.queue.delete(message.guild.id);
-      const endembed = new MessageEmbed().setColor("#F0EAD6")
+      const endembed = new MessageEmbed().setColor("RANDOM")
         .setAuthor(`Music Queue ended.`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
       return queue.textChannel.send(endembed).catch(console.error);
     }
@@ -138,7 +138,7 @@ module.exports = {
 
   try {
       let embed = new MessageEmbed()
-      .setColor("#F0EAD6")
+      .setColor("RANDOM")
       .setAuthor(`Started playing: ${song.title}`,'https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif')
       var playingMessage = await queue.textChannel.send(embed);
       var playingMessage = await queue.textChannel.send(`${song.url}`);
@@ -290,7 +290,7 @@ module.exports = {
           .setAuthor('♪Now playing♪','https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif','http://harmonymusic.tk')
           .setDescription(`[**${song.title}**](${song.url})`)
           .setThumbnail(song.thumbnail.url)
-          .setColor("#F0EAD6")
+          .setColor("RANDOM")
           .setFooter(`Requested by: ${message.author.username}#${message.author.discriminator}`, message.member.user.displayAvatarURL({ dynamic: true }))
       //if its a stream
       if(ms >= 10000) {
@@ -313,7 +313,7 @@ module.exports = {
           let queueEmbed = new MessageEmbed()
             .setTitle("Music Queue")
             .setDescription(description)
-            .setColor("#F0EAD6")
+            .setColor("RANDOM")
              ;
       
           const splitDescription = splitMessage(description, {
@@ -338,7 +338,7 @@ module.exports = {
           let lyrics = null;
           let temEmbed = new MessageEmbed()
           .setAuthor("Searching...", "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif").setFooter("Lyrics")
-          .setColor("#F0EAD6")
+          .setColor("RANDOM")
           let result = await message.channel.send(temEmbed)
           try {
             lyrics = await lyricsFinder(queue.songs[0].title,"");
@@ -350,7 +350,7 @@ module.exports = {
           let lyricsEmbed = new MessageEmbed()
             .setTitle("🗒️ Lyrics")
             .setDescription(lyrics)
-            .setColor("#F0EAD6")
+            .setColor("RANDOM")
       
           if (lyricsEmbed.description.length >= 2048)
       

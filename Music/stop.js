@@ -37,7 +37,7 @@ async execute(message,args,client) {
   await channel.leave();
   //send the approve message    
   message.channel.send(new MessageEmbed()
-  .setColor("#F0EAD6")
+  .setColor("RANDOM")
   .setAuthor(`${message.author.username} stopped the music!`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif"))
   .catch(console.error);
   }

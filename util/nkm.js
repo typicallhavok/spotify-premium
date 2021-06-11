@@ -10,7 +10,7 @@ module.exports = {
     //define the EMBED
     let resultsEmbed = new MessageEmbed()
       .setTitle("❗️ | You must be in the Same Voice Channel as of Harmony!")
-      .setColor("#F0EAD6")
+      .setColor("#RANDOM")
     //wenn memberchannel nicht der botchannel ist
     if (member.voice.channel !== member.guild.me.voice.channel) {
     //Send the message to the MEMBER

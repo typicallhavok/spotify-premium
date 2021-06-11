@@ -52,7 +52,7 @@ execute(message, args) {
     //Send approve
     queue.textChannel.send(
       new MessageEmbed()
-        .setColor("#F0EAD6")
+        .setColor("RANDOM")
         .setAuthor(`${message.author.username}#${message.author.discriminator} skipped ${args[0]} songs`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
     ).catch(console.error);
   }

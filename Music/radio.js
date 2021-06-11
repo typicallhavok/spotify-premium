@@ -150,7 +150,7 @@ module.exports = {
 **34: ** [\`${Radiostations[34 - 1].split(" ")[0]}\`](${Radiostations[34 - 1].split(" ")[1]})`, inline: true
         },
       )
-      .setColor("#F0EAD6")
+      .setColor("RANDOM")
       .setFooter(`Type: ${PREFIX}radio <1-34>`, client.user.displayAvatarURL())
       .setTimestamp();
     //if not guild send this
@@ -181,7 +181,7 @@ module.exports = {
       channel.leave();
       return message.reply(
         new MessageEmbed()
-          .setColor("#F0EAD6")
+          .setColor("RANDOM")
           .setTitle(`Not a valid radio station please use a Number between \`1\` and \`${Radiostations.length}\``)
       );
     }
@@ -199,7 +199,7 @@ module.exports = {
     if (Number(i) === 35) {
       channel.leave();
       return message.reply(new MessageEmbed()
-        .setColor("#F0EAD6")
+        .setColor("RANDOM")
         .setTitle(`Not a valid radio station please use a Number between \`1\` and \`${Radiostations.length}\``));
     }
     //define the Radio Args like title and url
@@ -235,11 +235,11 @@ module.exports = {
     queueConstruct.connection = await channel.join().catch(console.error);
     //Send info message for joining 
     if (!serverQueue)
-      message.channel.send(new MessageEmbed().setColor("#F0EAD6")
+      message.channel.send(new MessageEmbed().setColor("RANDOM")
         .setDescription(`**👍 Joined \`${channel.name}\` 📄 bouned \`#${message.channel.name}\`**`)
         .setFooter(`${message.author.username}#${message.author.discriminator}`));
     //send Search something embed
-    message.channel.send(new MessageEmbed().setColor("#F0EAD6")
+    message.channel.send(new MessageEmbed().setColor("RANDOM")
       .setDescription(`**:radio: Searching 🔍 \`${Radiostations[i - 1].split(" ")[0]}\`**`));
     //mute yourself
     await queueConstruct.connection.voice.setSelfDeaf(true);
@@ -272,7 +272,7 @@ module.exports = {
       //the new song embed
       const newsong = new MessageEmbed()
         .setTitle(":notes:" + song.title)
-        .setColor("#F0EAD6")
+        .setColor("RANDOM")
         .setThumbnail(song.thumbnail)
         .setURL(song.url)
         .setDescription(`\`\`\`Has been added to the Queue.\`\`\``)

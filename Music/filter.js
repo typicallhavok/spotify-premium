@@ -106,7 +106,7 @@ module.exports = {
         //fires if not valid input
         varforfilter = 404;
         message.channel.send(new MessageEmbed()
-        .setColor("#F0EAD6")
+        .setColor("RANDOM")
         .setTitle("Not a valid Filter, use one of those:")
         .setDescription(`
         \`bassboost\`

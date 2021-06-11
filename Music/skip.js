@@ -33,7 +33,7 @@ execute(message) {
     queue.connection.dispatcher.end();
     //send approve message
     queue.textChannel.send(
-      new MessageEmbed().setColor("#F0EAD6").setAuthor(`${message.author.username} skipped the song.`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
+      new MessageEmbed().setColor("RANDOM").setAuthor(`${message.author.username} skipped the song.`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
     ).catch(console.error);
   }
 };

@@ -35,7 +35,7 @@ execute(message, args) {
     //send approve
     queue.textChannel.send(new MessageEmbed()
     .setDescription(`:no_entry_sign: | ${message.author} removed **${song[0].title}** from the Queue`)
-    .setColor("#F0EAD6")
+    .setColor("RANDOM")
     );
   }
 };

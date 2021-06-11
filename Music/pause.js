@@ -29,7 +29,7 @@ module.exports = {
       //pause the music
       queue.connection.dispatcher.pause(true);
       //define the pause embed
-      const pausemebed = new MessageEmbed().setColor("#F0EAD6")
+      const pausemebed = new MessageEmbed().setColor("RANDOM")
       .setAuthor(`${message.author.username} paused the music.`, "https://media.giphy.com/media/kiho1zyvAmGiKBjIAs/giphy.gif")
       //react with approve emoji
       message.react(approveemoji)

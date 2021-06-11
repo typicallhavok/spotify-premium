@@ -15,7 +15,7 @@ module.exports = {
     //react with approve emoji
     message.react("✅");
     //send the botlist embed
-    message.reply(new MessageEmbed().setColor("#F0EAD6")
+    message.reply(new MessageEmbed().setColor("RANDOM")
     .setTitle("Here is a list for all Bot-Lists this Bot is on!")
    .addField("top.gg", "https://top.gg/bot/767885987740254291")
     .addField("Matrixbots","https://www.matrixbots.xyz/bots/767885987740254291/")

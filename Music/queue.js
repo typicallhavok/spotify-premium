@@ -35,7 +35,7 @@ module.exports = {
     let queueEmbed = new MessageEmbed()
       .setTitle("Music Queue")
       .setDescription(description)
-      .setColor("#F0EAD6");
+      .setColor("RANDOM");
     //split the description
     const splitDescription = splitMessage(description, {
       maxLength: 2048,
