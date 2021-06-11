@@ -17,7 +17,7 @@ module.exports = {
       .setTitle("Musicium Help")
       .setDescription(`**Version:** \`v2.8\` \n**PREFIX:** \`${PREFIX}\``)
       .setFooter( client.user.username +`Type: ${PREFIX}help <Command>  for more information!`, "https://cdn.discordapp.com/avatars/769642999227351070/f1b78891507308fb76c0a66b56f4bcd6.webp")
-      .setColor("#c219d8");
+      .setColor("GREEN");
 
       let ifargstruedothis = -1;
       
@@ -89,10 +89,10 @@ module.exports = {
             return
             }
             message.react("✅");
-            message.author.send(new MessageEmbed().setColor("#c219d8")
+            message.author.send(new MessageEmbed().setColor("GREEN")
             .setDescription(`**👍 Sent from <#${message.channel.id}>**`))
             message.author.send(helpEmbed)
-            message.channel.send( new MessageEmbed().setColor("#c219d8")
+            message.channel.send( new MessageEmbed().setColor("GREEN")
             .setDescription(`**👍 ${message.author} Check your \`direct messages\` for a list of Commands!**`)
             );
            
@@ -120,7 +120,7 @@ module.exports = {
         );
         if(!message.guild) return message.author.send(helpEmbed);
           message.author.send(helpEmbed)
-          message.channel.send( new MessageEmbed().setColor("#c219d8")
+          message.channel.send( new MessageEmbed().setColor("GREEN")
           .setDescription(`**👍 ${message.author} Check your \`direct messages\` for a list of Commands!**`)
           );
        }

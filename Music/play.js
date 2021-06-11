@@ -67,29 +67,29 @@ async execute(message, args, client) {
       if (serverQueue) {
         //if its an url
         if (urlValid) { //send searching link
-          message.channel.send(new MessageEmbed().setColor("#c219d8")
+          message.channel.send(new MessageEmbed().setColor("RANDOM")
             .setDescription(`**💢 Searching 🔍 [\`LINK\`](${args.join(" ")})**`))
         //if not
         }
         else { //send searching TITLE
-          message.channel.send(new MessageEmbed().setColor("#c219d8")
+          message.channel.send(new MessageEmbed().setColor("RANDOM")
             .setDescription(`**💢 Searching 🔍 \`${args.join(" ")}\`**`))
         }
       } else {
         //If nothing is playing join the channel
         queueConstruct.connection = await channel.join();
         //send join message
-        message.channel.send(new MessageEmbed().setColor("#c219d8")
+        message.channel.send(new MessageEmbed().setColor("RANDOM")
           .setDescription(`**👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\`**`)
           .setFooter(`By: ${message.author.username}#${message.author.discriminator}`))
         //if its an url
         if (urlValid) { //send searching link
-          message.channel.send(new MessageEmbed().setColor("#c219d8")
+          message.channel.send(new MessageEmbed().setColor("RANDOM")
             .setDescription(`**💢 Searching 🔍 [\`LINK\`](${args.join(" ")})**`))
           //if not 
         }
         else { //send searching TITLE
-          message.channel.send(new MessageEmbed().setColor("#c219d8")
+          message.channel.send(new MessageEmbed().setColor("RANDOM")
             .setDescription(`**💢 Searching 🔍 \`${args.join(" ")}\`**`))
         }
         //Set selfdeaf and serverdeaf true
@@ -160,7 +160,7 @@ async execute(message, args, client) {
       //the new song embed
       const newsong = new MessageEmbed()
         .setTitle("✅ " + song.title)
-        .setColor("#c219d8")
+        .setColor("RANDOM")
         .setThumbnail(thumb)
         .setURL(song.url)
         .setDescription(`\`\`\`Has been added to the Queue.\`\`\``)
