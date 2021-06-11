@@ -135,7 +135,7 @@ module.exports = {
       const song = queue.songs[0];
       //play the collected song song, message, client, filters
       message.channel.send(new MessageEmbed()
-      .setColor("#F0EAD6")
+      .setColor("RANDOM")
       .setAuthor("Applying: " + args[0], "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif","https://discord.com/api/oauth2/authorize?client_id=767885987740254291&permissions=49572160&scope=bot")).then(msg =>{
         msg.delete({timeout: 2000});
       })

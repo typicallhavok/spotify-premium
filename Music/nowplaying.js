@@ -47,7 +47,7 @@ execute(message) {
           .setAuthor('♪Now playing♪','https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif','https://harmonymusic.tk')
           .setDescription(`[**${song.title}**](${song.url})`)
           .setThumbnail(song.thumbnail.url)
-          .setColor("#F0EAD6")
+          .setColor("GREEN")
           .setFooter(`Requested by: ${message.author.username}#${message.author.discriminator}`, message.member.user.displayAvatarURL({ dynamic: true }))
       //if its a stream
       if(ms >= 10000) {
