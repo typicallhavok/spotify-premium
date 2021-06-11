@@ -1,10 +1,10 @@
 ////////////////////////////
 //////CONFIG LOAD///////////
 ////////////////////////////
-const { canModifyQueue } = require("../util/nkm");
+const { canModifyQueue } = require("../util/MilratoUtil");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed"); 
-const { approveemoji,  denyemoji,  PREFIX,} = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
@@ -19,7 +19,7 @@ execute(message,args,client) {
     //if not in a guild return
     if(!message.guild) return;
     //react with approve emoji
-    message.react(approveemoji).catch(console.error);
+    message.react("✅").catch(console.error);
     //get the Queue
     const queue = message.client.queue.get(message.guild.id);
     //if no queue return error
@@ -39,7 +39,7 @@ execute(message,args,client) {
     message.client.queue.set(message.guild.id, queue);
     //send the Approve message
     queue.textChannel.send(new MessageEmbed()
-    .setDescription(`**:notes: | ${message.author} shuffled the Queue**`)
-    .setColor("RANDOM")).catch(console.error);
+    .setDescription(`**✅ | ${message.author} shuffled the Queue**`)
+    .setColor("#c219d8")).catch(console.error);
   }
 };

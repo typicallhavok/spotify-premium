@@ -1,16 +1,16 @@
 ////////////////////////////
 //////CONFIG LOAD///////////
 ////////////////////////////
-const { canModifyQueue } = require("../util/nkm");
+const { canModifyQueue } = require("../util/MilratoUtil");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed"); 
-const { approveemoji,  denyemoji,  PREFIX,} = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
 module.exports = {
   name: "volume",
-  aliases: ["v"],
+  aliases: ["vol"],
   description: "Change volume",
   cooldown: 5,
   edesc: `Type the Command, to change the volume of the current song.\nUsage: ${PREFIX}volume <0-200>`,
@@ -19,7 +19,7 @@ execute(message, args) {
     //if not a guild return
     if(!message.guild) return;
     //react with approve emoji
-    message.react(approveemoji);
+    message.react("✅");
     //get the current queue
     const queue = message.client.queue.get(message.guild.id);
     //if no queue return error
@@ -28,7 +28,7 @@ execute(message, args) {
     if (!canModifyQueue(message.member)) return;
     //define Info Embed
     const volinfoembed = new MessageEmbed()
-    .setColor("RANDOM")
+    .setColor("#c219d8")
     .setTitle(`🔊 Volume is: \`${queue.volume}%\``)
     //if no args return info embed   			 
     if (!args[0]) return message.channel.send(volinfoembed).catch(console.error);
@@ -43,7 +43,7 @@ execute(message, args) {
     queue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);
     //define approve embed
     const volinfosetembed = new MessageEmbed()   
-    .setColor("RANDOM")
+    .setColor("#c219d8")
     .setTitle(`🔊 Volume changed to: \`${args[0]}%\`!`)  
     //Send approve message
     return queue.textChannel.send(volinfosetembed).catch(console.error);

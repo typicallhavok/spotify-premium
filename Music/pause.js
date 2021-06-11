@@ -1,15 +1,10 @@
-const { canModifyQueue } = require("../util/nkm");
+const { canModifyQueue } = require("../util/MilratoUtil");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 
 const { attentionembed } = require("../util/attentionembed"); 
-const {
-  approveemoji,
-  denyemoji,
-  PREFIX,
-} = require(`../config.json`);
+const { PREFIX } = require(`../config.json`);
 module.exports = {
   name: "pause",
-  aliases: ["pa"],
   description: "Pause the currently playing music",
   cooldown: 5,
   edesc: `Type this command to pause the Song!\nUsage: ${PREFIX}pause`,
@@ -29,10 +24,10 @@ module.exports = {
       //pause the music
       queue.connection.dispatcher.pause(true);
       //define the pause embed
-      const pausemebed = new MessageEmbed().setColor("RANDOM")
-      .setAuthor(`${message.author.username} paused the music.`, "https://media.giphy.com/media/kiho1zyvAmGiKBjIAs/giphy.gif")
+      const pausemebed = new MessageEmbed().setColor("#c219d8")
+      .setAuthor(`${message.author.username} paused the music.`, "https://cdn.discordapp.com/emojis/769912238236106793.png")
       //react with approve emoji
-      message.react(approveemoji)
+      message.react("✅")
       //return message
       return queue.textChannel.send(pausemebed).catch(console.error);
     }
