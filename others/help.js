@@ -1,6 +1,8 @@
 const { Client, Collection, MessageEmbed } = require(`discord.js`);
 const { 
   PREFIX, 
+  approveemoji,
+  denyemoji 
 } = require(`../config.json`);
 
 module.exports = {
@@ -14,9 +16,10 @@ module.exports = {
     let commands = message.client.commands.array();
  
     let helpEmbed = new MessageEmbed()
-      .setTitle("Musicium Help")
-      .setDescription(`**Version:** \`v2.8\` \n**PREFIX:** \`${PREFIX}\``)
-      .setFooter( client.user.username +`Type: ${PREFIX}help <Command>  for more information!`, "https://cdn.discordapp.com/avatars/769642999227351070/f1b78891507308fb76c0a66b56f4bcd6.webp")
+      .setTitle("Harmony Help")
+      .setAuthor('Click here to invite me!!', 'https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif', 'https://discord.com/api/oauth2/authorize?client_id=767885987740254291&permissions=49572160&scope=bot')
+      .setDescription(`**PREFIX:** \`${PREFIX}\``)
+      .setFooter( client.user.username +`Type: ${PREFIX}help <Command>  for more information!`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
       .setColor("GREEN");
 
       let ifargstruedothis = -1;
@@ -75,6 +78,21 @@ module.exports = {
           break;
           case "help":
             ifargstruedothis=17
+          break;    
+          case "invite":
+            ifargstruedothis=18
+          break;
+          case "ping":
+            ifargstruedothis=19
+          break;
+          case "prefix":
+            ifargstruedothis=20
+          break;
+          case "uptime":
+            ifargstruedothis=21
+          break;
+          case "botlist":
+            ifargstruedothis=22
           break;
           default:        
             commands.forEach((cmd) => {
@@ -85,16 +103,10 @@ module.exports = {
               );
             });
           if(!message.guild) {
-            if(!args[0]) {message.react("✅");return message.author.send(helpEmbed);}
+            if(!args[0]) {message.react(approveemoji);return message.channel.send(helpEmbed);}
             return
             }
-            message.react("✅");
-            message.author.send(new MessageEmbed().setColor("GREEN")
-            .setDescription(`**👍 Sent from <#${message.channel.id}>**`))
-            message.author.send(helpEmbed)
-            message.channel.send( new MessageEmbed().setColor("GREEN")
-            .setDescription(`**👍 ${message.author} Check your \`direct messages\` for a list of Commands!**`)
-            );
+            message.channel.send(helpEmbed);
            
         break;
        }
@@ -118,12 +130,9 @@ module.exports = {
           `**:wrench: Cooldown:**`,
           `\`${cooldown}\``
         );
-        if(!message.guild) return message.author.send(helpEmbed);
-          message.author.send(helpEmbed)
-          message.channel.send( new MessageEmbed().setColor("GREEN")
-          .setDescription(`**👍 ${message.author} Check your \`direct messages\` for a list of Commands!**`)
-          );
+        if(!message.guild) return message.channel.send(helpEmbed);
+          message.channel.send(helpEmbed);
        }
 
 }
-} 
+}

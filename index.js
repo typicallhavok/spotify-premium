@@ -2,43 +2,46 @@ const Discord = require(`discord.js`);
 const { Client, Collection, MessageEmbed,MessageAttachment } = require(`discord.js`);
 const { readdirSync } = require(`fs`);
 const { join } = require(`path`);
-const { TOKEN, PREFIX} = require(`./config.json`);
+const db = require('quick.db');
+const { keep_alive } = require("./keep_alive");
+const { TOKEN, PREFIX, AVATARURL, BOTNAME, } = require(`./config.json`);
 const figlet = require("figlet");
 const client = new Client({ disableMentions: `` , partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 client.login(TOKEN);
 client.commands = new Collection();
 client.prefix = PREFIX;
 client.queue = new Map();
-client.setMaxListeners(0);
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 
 //this fires when the BOT STARTS DO NOT TOUCH
 client.on(`ready`, () => {	
 
-  
+   
    ///////////////////////////////
     ////////////IFCHEMPTY//////////
         //remove everything in between those 2 big comments if you want to disable that the bot leaves when ch. or queue gets empty!
         setInterval(() => { 
-        let member;
-      client.guilds.cache.forEach(async guild =>{
-      await delay(15);
-        member = await client.guilds.cache.get(guild.id).members.cache.get(client.user.id)
-      //if not connected
-        if(!member.voice.channel)
-        return;
-        //if connected but not speaking
-    if(!member.speaking&&!client.queue)
-    { return member.voice.channel.leave(); } 
-      //if alone 
-      if (member.voice.channel.members.size === 1) 
-      { return member.voice.channel.leave(); }
-    });
+          let member;
+        client.guilds.cache.forEach(async guild =>{
+        await delay(15);
+          member = await client.guilds.cache.get(guild.id).members.cache.get(client.user.id)
+        //if not connected
+          if(!member.voice.channel)
+          return;
+        //if alone 
+        if (member.voice.channel.members.size === 1) 
+        { return member.voice.channel.leave(); }
+      });
+      
+
+      client.user.setActivity(`${PREFIX}help | ${client.guilds.cache.size} Server`, { type: "STREAMING",
+      url: "https://www.twitch.tv/nocopyrightsounds"});
+   
   
-    }, (5000));
-    ////////////////////////////////
-    ////////////////////////////////
+      }, (5000));
+      ////////////////////////////////
+      ////////////////////////////////
     figlet.text(`${client.user.username} ready!`, function (err, data) {
       if (err) {
           console.log('Something went wrong');
@@ -71,22 +74,33 @@ for (const file of commandFiles) {
 client.on(`message`, async (message) => {
   if (message.author.bot) return;
   
-  if(message.content === `${PREFIX}ping`)
-  return message.reply(":ping_pong: `" + client.ws.ping + "ms`")
+  //getting prefix 
+  let prefix = await db.get(`prefix_${message.guild.id}`)
+  //if not prefix set it to standard prefix in the config.json file
+  if(prefix === null) prefix = PREFIX;
 
-  if (message.content.toLowerCase() === `${PREFIX}uptime`) {
-    let days = Math.floor(client.uptime / 86400000);
-    let hours = Math.floor(client.uptime / 3600000) % 24;
-    let minutes = Math.floor(client.uptime / 60000) % 60;
-    let seconds = Math.floor(client.uptime / 1000) % 60;
-   return message.channel.send(`***__Music-Bot-Uptime:__***\n\`\`\`fix\n${days}d ${hours}h ${minutes}m ${seconds}s\n\`\`\``);
-}
-
+  //information message when the bot has been tagged
   if(message.content.includes(client.user.id)) {
-    message.reply(new Discord.MessageEmbed().setColor("#00ebaa").setAuthor(`${message.author.username}, My Prefix is ${PREFIX}, to get started; type ${PREFIX}help`, message.author.displayAvatarURL({dynamic:true})));
+    message.reply(new Discord.MessageEmbed().setColor("#F0EAD6").setAuthor(`${message.author.username}, My Prefix is ${prefix}, to get started; type ${prefix}help`, message.author.displayAvatarURL({dynamic:true})));
   } 
+  //An embed announcement for everyone but no one knows so fine ^w^
+  if(message.content.startsWith(`${prefix}embed`)){
+    //define saymsg
+    const saymsg = message.content.slice(Number(prefix.length) + 5)
+    //define embed
+    const embed = new Discord.MessageEmbed()
+    .setColor("#F0EAD6")
+    .setDescription(saymsg)
+    .setFooter("Harmony", client.user.displayAvatarURL())
+    //delete the Command
+    message.delete({timeout: 300})
+    //send the Message
+    message.channel.send(embed)
+  }
+
+
 //command Handler DO NOT TOUCH
- const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
+ const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
  if (!prefixRegex.test(message.content)) return;
  const [, matchedPrefix] = message.content.match(prefixRegex);
  const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
@@ -106,8 +120,8 @@ client.on(`message`, async (message) => {
    if (now < expirationTime) {
      const timeLeft = (expirationTime - now) / 1000;
      return message.reply(
-      new MessageEmbed().setColor("#30ff91")
-      .setTitle(`❌ Please wait \`${timeLeft.toFixed(1)} seconds\` before reusing the \`${PREFIX}${command.name}\`!`)    
+      new MessageEmbed().setColor("#F0EAD6")
+      .setTitle(`:x: Please wait \`${timeLeft.toFixed(1)} seconds\` before reusing the \`${prefix}${command.name}\`!`)    
      );
    }
  }
@@ -117,7 +131,8 @@ client.on(`message`, async (message) => {
    command.execute(message, args, client);
  } catch (error) {
    console.error(error);
-   message.reply(`There was an error executing that command.`).catch(console.error);
+   message.reply( new MessageEmbed().setColor("#F0EAD6")
+   .setTitle(`:x: There was an error executing that command.`)).catch(console.error);
  }
 
 
@@ -129,5 +144,3 @@ function delay(delayInms) {
    }, delayInms);
  });
 }
-
-//Bot coded by Tomato#6966 

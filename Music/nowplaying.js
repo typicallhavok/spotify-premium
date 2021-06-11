@@ -4,7 +4,11 @@
 const createBar = require("string-progressbar");
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed"); 
-const { PREFIX } = require(`../config.json`);
+const {
+  approveemoji,
+  denyemoji,
+  PREFIX,
+} = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
@@ -19,7 +23,7 @@ execute(message) {
     //if not in a guild return
     if(!message.guild) return;
     //react with approve emoji
-    message.react("✅")
+    message.react(approveemoji)
     //get Server Queue
     const queue = message.client.queue.get(message.guild.id);
     //if nothing playing error
@@ -32,7 +36,7 @@ execute(message) {
     let ms = (Number(minutes)*60+Number(seconds));   
     //get thumbnail
     let thumb;
-    if (song.thumbnail === undefined) thumb = "https://cdn.discordapp.com/attachments/748095614017077318/769672148524335114/unknown.png";
+    if (song.thumbnail === undefined) thumb = "https://media.giphy.com/media/P4OLEIP94nLi63K9JM/giphy.gif";
     else thumb = song.thumbnail.url;
     //define current time
     const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
@@ -40,11 +44,11 @@ execute(message) {
     const left = ms - seek;
     //define embed
     let nowPlaying = new MessageEmbed()
-      .setTitle("Now playing")
-      .setDescription(`[**${song.title}**](${song.url})`)
-      .setThumbnail(song.thumbnail.url)
-      .setColor("RANDOM")
-      .setFooter("Time Remaining: " + new Date(left * 1000).toISOString().substr(11, 8));
+          .setAuthor('♪Now playing♪','https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif','https://harmonymusic.tk')
+          .setDescription(`[**${song.title}**](${song.url})`)
+          .setThumbnail(song.thumbnail.url)
+          .setColor("GREEN")
+          .setFooter(`Requested by: ${message.author.username}#${message.author.discriminator}`, message.member.user.displayAvatarURL({ dynamic: true }))
       //if its a stream
       if(ms >= 10000) {
         nowPlaying.addField("\u200b", "🔴 LIVE", false);
@@ -53,7 +57,7 @@ execute(message) {
       }
       //If its not a stream 
       if (ms > 0 && ms<10000) {
-        nowPlaying.addField("\u200b", "**[" + createBar((ms == 0 ? seek : ms), seek, 25, "▬", "⚪️")[0] + "]**\n**" + new Date(seek * 1000).toISOString().substr(11, 8) + " / " + (ms == 0 ? " ◉ LIVE" : new Date(ms * 1000).toISOString().substr(11, 8))+ "**" , false );
+        nowPlaying.addField("\u200b", "**``[" + createBar((ms == 0 ? seek : ms), seek, 25, "▬", "🔘")[0] + "]``**\n**" + "\n[" + new Date(seek * 1000).toISOString().substr(11, 8) + " / " + (ms == 0 ? " ◉ LIVE" : new Date(ms * 1000).toISOString().substr(11, 8))+ "]**" + "\n" + "\n **Time Remaining:**" + "``" + new Date(left * 1000).toISOString().substr(11, 8) + "``", false );
         //send approve msg
         return message.channel.send(nowPlaying);
       }

@@ -1,15 +1,10 @@
-# Music Bot with Filters | Musicium
-
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Tomato6966/)
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Tomato6966/Ask-Me-Anything)
-[![Support Server](https://img.shields.io/discord/591914197219016707.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/fS6qBSm)
+[![Music-Bot-With-Filters-v2](https://github-readme-stats.vercel.app/api/pin/?username=navaneethkm004&repo=Music-Bot-With-Filters-v2&theme=dark)](https://github.com/navaneethkm004/Music-Bot-With-Filters-v2)<br/>
 
 An advanced Music Bot, with 30+ Radio Stations, with capability of filters, like Bassboost, Nightcore, etc. and reaction interactivity. Based on ytdl-core with discord.js Guide Handler. With ideas from eritislami 
 
-You can always [invite](https://bit.ly/Musicium) the Bot to your Server if you wish, its public and you can use it!
+### **IMPORTANT!** 
 
-## [**DISCORD SUPPORT SERVER INVITE**](https://support.milrato.eu)
+If you decide to use this Bot, [check out this Github repo first](https://github.com/navaneethkm004/Music-Bot-With-Filters) cause this is the same exact Bot with standard Discord/Unicode Emojis, which means that you can just simply use it instantly without changing the emojis!
 
 #### Commands:
 
@@ -43,9 +38,17 @@ You can always [invite](https://bit.ly/Musicium) the Bot to your Server if you w
  
  **4.** Install all of the packages with **`npm install`**     |  the packages are   **`npm install node.js @discordjs/opus discord.js ffmpeg-static figlet lyrics-finder string-progressbar ytdl-core discord-ytdl-core youtube-sr`**
  
- **5.** start the bot with **`node index.js`**
+ **5.** start the bot with **`node index.js`**<br/>
+ 
+ [![Run on Repl.it](https://repl.it/badge/github/navaneethkm004/Music-Bot-With-Filters-v2)](https://repl.it/github/navaneethkm004/Music-Bot-With-Filters-v2)</br>
 
-*This Bot uses standard emojis, so just downloading it and filling in the TOKEN will make the Bot work!*
+## **TUTORIAL** 
+
+Watch tutorial on YouTube!!<br/>
+
+[<img src="https://github.com/navaneethkm004/my-images/blob/main/Yellow%20Simple%20Education%20YouTube%20Channel%20Art.png?raw=true" width="917" height="515">](https://www.youtube.com/watch?v=IPv1uWSKC-Q)<br/>
+
+Please subscribe my YT channel and like the video.
 
 ## Usage - config.json
 
@@ -53,15 +56,13 @@ You can always [invite](https://bit.ly/Musicium) the Bot to your Server if you w
 {
   "TOKEN": "",
   "PREFIX": "+",
+  "approveemoji": "EMOJIID",
+  "denyemoji": "EMOJIID",
+  "erroremoji": "EMOJIID"
 }
 ```
 
 It is important that you fill in every item of the JSON FILE! every emoji used in this BOT is a custom emoji, the emojis are listed down below as images, which you can download and upload to your server to use them. NOTE: you gotta change emoji.id to emoji.name if you use discord / unicode emojis! Soon a new Repo with standard emojis will be awailable for easy usages!
-
-## **Video:**
-
-[![](http://img.youtube.com/vi/AgmaTBGnfYw/0.jpg)](http://www.youtube.com/watch?v=AgmaTBGnfYw "")
-
 
 ## **NOTE:**
 
@@ -69,91 +70,16 @@ It is important that you fill in every item of the JSON FILE! every emoji used i
 
 *If you are having errors/problems with starting delete the package.json file and do, before you install the packages `npm init`*
 
-## BEST HOSTING | Bittmax.de
-BITTMAX Quality is their solution.
-Bittmax is our first and probably most important sponsor!
+## SUPPORT ME
 
-**What they are offering:**
-> Quality LXC & KVM (Root) Server
-> Minecraft Hosting, as well as BungeeCord Network Hosting support
-> Cheap and fast Domains
-> WEBHOSTING
-> DISCORD, TEAMSPEAK, Setups / Music Bots
-> GAME SERVER, Rust, Gary's Mod, ..
+<div align="center">
+            <a href="https://www.buymeacoffee.com/navaneethkm" target="_blank" style="display: inline-block;">
+                <img
+                    src="https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square" 
+                    align="center"
+                />
+            </a></div>
 
-**Discord Server:**
-[https://discord.gg/GgjJZCyYKD](https://discord.gg/GgjJZCyYKD)
+## Credits
 
-**Website:**
-[https://bittmax.de/](https://bittmax.de/])
-
-GET **5%** OFF EVERYTHING FOR EVER!
-Code: **`x10`**
-
-## MC-Host24.de
-MC-Host24.de is selling the Best Digital Hosting Services ever!
-Like For games..
-
-**What they are offering:**
-> Quality LXC & KVM (Root) Server
-> WORLDS BEST Minecraft Hosting,
-> Cheap and fast Domains
-> WEBHOSTING
-> DISCORD, TEAMSPEAK, Setups / Music Bots
-> GAME SERVER, Rust, Gary's Mod, ..
-
-**Discord Server:**
-[https://discord.com/invite/4dGuGXK4A4](https://discord.com/invite/4dGuGXK4A4)
-
-**Website:**
-[mc-host24.de](https://mc-host24.de/user/affiliate/3121])
-
-
-# SUPPORT ME AND MILRATO DEVELOPMENT
-
-You can always Support me by inviting one of my **own Discord Bots**
-
-[![2021's best Music Bot | Lava Music](https://cdn.discordapp.com/attachments/748533465972080670/817088638780440579/test3.png)](https://lava.milrato.eu)
-[![Musicium Music Bot](https://cdn.discordapp.com/attachments/742446682381221938/770055673965707264/test1.png)](https://dc.musicium.eu)
-[![Milrato Multi Bot](https://cdn.discordapp.com/attachments/742446682381221938/770056826724679680/test1.png)](https://dc.milrato.eu)
-
-## Sponsors
-
-### BEST HOSTING | Bittmax.de
-BITTMAX Quality is their solution.
-Bittmax is our first and probably most important sponsor!
-
-**What they are offering:**
-> Quality LXC & KVM (Root) Server
-> Minecraft Hosting, as well as BungeeCord Network Hosting support
-> Cheap and fast Domains
-> WEBHOSTING
-> DISCORD, TEAMSPEAK, Setups / Music Bots
-> GAME SERVER, Rust, Gary's Mod, ..
-
-**Discord Server:**
-[https://discord.gg/GgjJZCyYKD](https://discord.gg/GgjJZCyYKD)
-
-**Website:**
-[https://bittmax.de/](https://bittmax.de/])
-
-GET **5%** OFF EVERYTHING FOR EVER!
-Code: **`x10`**
-
-### MC-Host24.de
-MC-Host24.de is selling the Best Digital Hosting Services ever!
-Like For games..
-
-**What they are offering:**
-> Quality LXC & KVM (Root) Server
-> WORLDS BEST Minecraft Hosting,
-> Cheap and fast Domains
-> WEBHOSTING
-> DISCORD, TEAMSPEAK, Setups / Music Bots
-> GAME SERVER, Rust, Gary's Mod, ..
-
-**Discord Server:**
-[https://discord.com/invite/4dGuGXK4A4](https://discord.com/invite/4dGuGXK4A4)
-
-**Website:**
-[mc-host24.de](https://mc-host24.de/user/affiliate/3121])
+[@eritislami](https://github.com/eritislami/) For the Reacting system to messages, great Idea i adopted that [@iCrawl/evobot](https://github.com/eritislami/evobot)

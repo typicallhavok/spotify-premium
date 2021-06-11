@@ -4,14 +4,14 @@
 const ytsr = require("youtube-sr")
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { attentionembed } = require("../util/attentionembed"); 
-const { PREFIX } = require(`../config.json`);
+const { approveemoji,  denyemoji,  PREFIX,} = require(`../config.json`);
 ////////////////////////////
 //////COMMAND BEGIN/////////
 ////////////////////////////
 module.exports = {
   name: "search",
   description: "Search and select videos to play",
-  aliases: ["find"],
+  aliases: ["s"],
   cooldown: 3,
   edesc: `Type this Command to find first 5 results for your song!\nUsage: ${PREFIX}search <TITEL | URL>`,
 
@@ -23,7 +23,7 @@ async execute(message,args,client) {
      //get serverqueue
      const serverQueue = message.client.queue.get(message.guild.id);
     //react with approve emoji
-    message.react("✅").catch(console.error);
+    message.react(approveemoji).catch(console.error);
     //if the argslength is null return error
     if (!args.length)
       return attentionembed(message,`Usage: ${message.client.prefix}${module.exports.name} <Video Name>`)
@@ -40,14 +40,15 @@ async execute(message,args,client) {
     const search = args.join(" ");
     //define a temporary Loading Embed
     let temEmbed = new MessageEmbed()
-    .setAuthor("Searching...", "https://cdn.discordapp.com/emojis/757632044632375386.gif?v=1")
-    .setColor("#f300e5")
+    .setAuthor("Searching...", "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
+    .setColor("RANDOM")
     //define the Result Embed
     let resultsEmbed = new MessageEmbed()
-      .setTitle("✅ Results for: ")
+      .setTitle("Results for ")
       .setDescription(`\`${search}\``)
-      .setColor("#f300e5")
-      .setFooter("Response with your favorite number", client.user.displayAvatarURL() )
+      .setColor("RANDOM")
+      .setAuthor("Search results!!", "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif","http://harmonymusic.tk")
+      .setFooter("Response with your favorite number","https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
     //try to find top 5 results
     try {
       //find them
@@ -71,11 +72,11 @@ async execute(message,args,client) {
       await resultsMessage.awaitReactions((reaction, user) => user.id == message.author.id,
       {max: 1, time: 60000, errors: ['time'],} ).then(collected => {
         //if its one of the emoji set them to 1 / 2 / 3 / 4 / 5
-          if(collected.first().emoji.name == "1️⃣"){ return response = 1; }
-          if(collected.first().emoji.name == "2️⃣"){ return response = 2; }
-          if(collected.first().emoji.name == "3️⃣"){ return response = 3; }
-          if(collected.first().emoji.name == "4️⃣"){ return response = 4; }
-          if(collected.first().emoji.name == "5️⃣"){ return response = 5; }
+          if(collected.first().emoji.name == "1️⃣"){ return response = 1;}
+          if(collected.first().emoji.name == "2️⃣"){ return response = 2;}
+          if(collected.first().emoji.name == "3️⃣"){ return response = 3;}
+          if(collected.first().emoji.name == "4️⃣"){ return response = 4;}
+          if(collected.first().emoji.name == "5️⃣"){ return response = 5;}
           //otherwise set it to error
           else{
             response = "error";
