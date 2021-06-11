@@ -7,12 +7,12 @@ module.exports = {
   execute(message) {
 
     let inviteEmbed = new MessageEmbed()
-      .setTitle("Add us to your server!")
-      .setDescription("Love using Harmony? Great, Thank you! Consider adding it to your server")
+      .setTitle("Add the bot to your server!")
+      .setDescription("Spotify but no ads, Consider adding it to your server!")
       .setColor("RANDOM")
-      .setAuthor('Harmony','https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif')
+      .setAuthor('Spotify Premium','https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif')
       .setThumbnail(message.guild.iconURL())
-      .addField(`Use the following link to add Harmony to your discord server`, 'https://discord.com/api/oauth2/authorize?client_id=767885987740254291&permissions=49572160&scope=bot', true)
+      .addField(`Use the following link to add Spotify premium to your discord server`, 'https://discord.com/api/oauth2/authorize?client_id=849933694596153414&permissions=0&scope=bot', true)
 
     inviteEmbed.setTimestamp();
 

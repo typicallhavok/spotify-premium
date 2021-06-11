@@ -16,12 +16,8 @@ module.exports = {
     message.react("✅");
     //send the botlist embed
     message.reply(new MessageEmbed().setColor("RANDOM")
-    .setTitle("Here is a list for all Bot-Lists this Bot is on!")
-   .addField("top.gg", "https://top.gg/bot/767885987740254291")
-    .addField("Matrixbots","https://www.matrixbots.xyz/bots/767885987740254291/")
-    .addField("bots.ondiscord","https://bots.ondiscord.xyz/bots/767885987740254291")
-    .addField("discordbotlist","https://discordbotlist.com/bots/harmony")
-    .addField("discordextremelist","https://discordextremelist.xyz/en-US/bots/767885987740254291")
+    .setTitle("Invite other bots!")
+   .addField("https://discord.com/api/oauth2/authorize?client_id=851863614775361546&permissions=0&redirect_uri=http%3A%2F%2FDiscord-MusicBot.axom.repl.co%2Fapi%2Fcallback&scope=bot", "axom")
     );
 
   }

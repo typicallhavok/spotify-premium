@@ -9,7 +9,7 @@ module.exports = {
  async canModifyQueue(member) {
     //define the EMBED
     let resultsEmbed = new MessageEmbed()
-      .setTitle("❗️ | You must be in the Same Voice Channel as of Harmony!")
+      .setTitle("❗️ | You must be in the Same Voice Channel as of Spotify!")
       .setColor("#RANDOM")
     //wenn memberchannel nicht der botchannel ist
     if (member.voice.channel !== member.guild.me.voice.channel) {
