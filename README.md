@@ -1,86 +1,85 @@
-# Music-bot
-A complete code to download for a music bot. Using a module (discord-player) 🎧
+[![Music-Bot-With-Filters-v2](https://github-readme-stats.vercel.app/api/pin/?username=navaneethkm004&repo=Music-Bot-With-Filters-v2&theme=dark)](https://github.com/navaneethkm004/Music-Bot-With-Filters-v2)<br/>
 
-Looking for a code for a music bot ? This fully open source code is made for your project !
+An advanced Music Bot, with 30+ Radio Stations, with capability of filters, like Bassboost, Nightcore, etc. and reaction interactivity. Based on ytdl-core with discord.js Guide Handler. With ideas from eritislami 
 
-If you need help with this project, to get support faster you can join the help server by just clicking [here](https://discord.gg/5cGSYV8ZZj).
+### **IMPORTANT!** 
 
-### ⚡ Installation
+If you decide to use this Bot, [check out this Github repo first](https://github.com/navaneethkm004/Music-Bot-With-Filters) cause this is the same exact Bot with standard Discord/Unicode Emojis, which means that you can just simply use it instantly without changing the emojis!
 
-Well, let's start by downloading the code.
-Go to the folder `config` then the file `bot.js`.
-For the bot to be able to start, please complete the file with your credentials as follows :
+#### Commands:
 
-- For emojis
+- `filter <FILTERNAME>` --    *Set Audio - Effects*
+- `loop`                --    *Toggle music loop*
+- `lyrics`              --    *Get lyrics for the currently playing song*
+- `nowplaying`          --    *Show current song*
+- `pause`               --    *Pause the currently playing music*
+- `play <TITEL | URL>`  --    *Plays song from YouTube/Stream*
+- `queue`               --    *Show the music queue and now playing*
+- `radio <RADIOSTATION>`--    *Play a Radiostation*
+- `remove`              --    *Remove song from the queue*
+- `resume`              --    *Resume currently playing music*
+- `search <TITEL | URL>`--    *Search and select videos to play*
+- `shuffle`             --    *Shuffles the current Queue!*
+- `skip`                --    *Skip the currently playing song*
+- `skipto <QUEUE NUM.>` --    *Skip to the selected queue number*
+- `stop`                --    *Stops the music*
+- `volume <VOL. NUM.>`  --    *Change volume*
+- `help [COMMAND]`      --    *Gives you a list of all help Commands*
 
-```js
-emojis: {
-    off: ':x:',
-    error: ':warning:',
-    queue: ':bar_chart:',
-    music: ':musical_note:',
-    success: ':white_check_mark:',
+**NO API-KEY NEEDED!** That's because it uses a scraper (`youtube-sr`)!
+
+## Installation | How to use the Bot
+
+ **1.** Install [node.js v12](https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode) or higher
+
+ **2.** Install [ffmpeg@latest](https://ffmpeg.org) 
+
+ **3.** Download this repo and unzip it    |    or git clone it
+ 
+ **4.** Install all of the packages with **`npm install`**     |  the packages are   **`npm install node.js @discordjs/opus discord.js ffmpeg-static figlet lyrics-finder string-progressbar ytdl-core discord-ytdl-core youtube-sr`**
+ 
+ **5.** start the bot with **`node index.js`**<br/>
+ 
+ [![Run on Repl.it](https://repl.it/badge/github/navaneethkm004/Music-Bot-With-Filters-v2)](https://repl.it/github/navaneethkm004/Music-Bot-With-Filters-v2)</br>
+
+## **TUTORIAL** 
+
+Watch tutorial on YouTube!!<br/>
+
+[<img src="https://github.com/navaneethkm004/my-images/blob/main/Yellow%20Simple%20Education%20YouTube%20Channel%20Art.png?raw=true" width="917" height="515">](https://www.youtube.com/watch?v=IPv1uWSKC-Q)<br/>
+
+Please subscribe my YT channel and like the video.
+
+## Usage - config.json
+
+```json
+{
+  "TOKEN": "",
+  "PREFIX": "+",
+  "approveemoji": "EMOJIID",
+  "denyemoji": "EMOJIID",
+  "erroremoji": "EMOJIID"
 }
 ```
 
-- For configuration
+It is important that you fill in every item of the JSON FILE! every emoji used in this BOT is a custom emoji, the emojis are listed down below as images, which you can download and upload to your server to use them. NOTE: you gotta change emoji.id to emoji.name if you use discord / unicode emojis! Soon a new Repo with standard emojis will be awailable for easy usages!
 
-```js
-discord: {
-    token: 'TOKEN',
-    prefix: 'PREFIX',
-    activity: 'ACTIVITY',
-}
-```
+## **NOTE:**
 
-- `token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
-- `prefix`, the prefix that will be set to use the bot.
-- `activity`, the activity of the bot.
+*Make sure that you have installed [FFmpeg](https://ffmpeg.org), and added it to Systemenvironment variables (PATH)*
 
-In the console, type `npm install` to install all dependencies.
+*If you are having errors/problems with starting delete the package.json file and do, before you install the packages `npm init`*
 
-- To start the bot :
+## SUPPORT ME
 
-```
-#With Node
-node index.js
-npm start #Indicated in package.json
+<div align="center">
+            <a href="https://www.buymeacoffee.com/navaneethkm" target="_blank" style="display: inline-block;">
+                <img
+                    src="https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square" 
+                    align="center"
+                />
+            </a></div>
 
-#With pm2
-pm2 start index.js --name "MusicBot"
-```
+## Credits
 
-All you have to do is turn on your bot !
-
-### 🎵 Music commands
-
-```
-play <name/URL>, play music in a voice channel.
-search <name>, open a panel to choose a music and then play it.
-pause, pause the current music.
-resume, puts the current music back on.
-queue, see the next songs.
-clear-queue, remove music in the queue.
-shuffle, to mix the queue.
-nowplaying, see music in progress.
-loop, to enable or disable the repeat function.
-volume <1 - 100>, change the volume.
-skip, skip to next music.
-stop, stop all music.
-filter <filter>, add / remove filter.
-w-filters, see filters.
-```
-
-### 💡 General commands
-
-```
-ping, see the bot latency.
-help, see the list of available commands.
-debug, see number of voice connections.
-```
-
-### 🏓 Utilities (to change the code)
-
-Find all the functions available on the official code [right here](https://github.com/Androz2091/discord-player).
-
-This is used with [discord.js](https://www.npmjs.com/package/discord.js) and [discord-player](https://www.npmjs.com/package/discord-player).
+[@eritislami](https://github.com/eritislami/) For the Reacting system to messages, great Idea i adopted that [@iCrawl/evobot](https://github.com/eritislami/evobot)
